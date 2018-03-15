@@ -1,20 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Marketplace
-Explore
- @liquanchen9
-Sign out
-3
-35 16 gw0/docker-keras-full
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-docker-keras-full/Dockerfile
-731dbc5  27 days ago
-@gw0 gw0 Add Keras 2.1.4, TensorFlow 1.5.0 and CNTK 2.4.
-     
-179 lines (157 sloc)  5.75 KB
 # docker-keras-full - Deep learning environment with *Keras* and *Jupyter* using CPU or GPU
 
 FROM gw000/keras:2.1.4-gpu
@@ -115,7 +98,7 @@ RUN apt-get update -qq \
  && rm -rf /var/lib/apt/lists/*
 
 # install additional python packages
-RUN pip --no-cache-dir --index https://mirrors.aliyun.com/pypi/simple/ install \
+RUN pip --no-cache-dir  install  --index https://mirrors.aliyun.com/pypi/simple/ \
     # jupyter notebook and ipython (Python 2)
     ipython \
     ipykernel \
@@ -126,7 +109,7 @@ RUN pip --no-cache-dir --index https://mirrors.aliyun.com/pypi/simple/ install \
     pandas \
     scikit-learn \
     statsmodels \
-    imutils 
+    imutils \
     opencv-contrib-python \
  && python -m ipykernel.kernelspec \
  && pip3 --no-cache-dir install \
@@ -195,15 +178,3 @@ CMD /bin/bash -c 'jupyter notebook \
     --NotebookApp.allow_password_change=False \
     --JupyterWebsocketPersonality.list_kernels=True \
     "$@"'
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-API
-Training
-Shop
-Blog
-About
